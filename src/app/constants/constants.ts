@@ -1,0 +1,1 @@
+export const IMAGE_BASE_URL = "https://nyerblobstoreprod.blob.core.windows.net/product-images-public/";
