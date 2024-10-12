@@ -2,9 +2,13 @@ import { Gender } from "../components";
 
 export const getRandomOutfitAsync = async (filter: Gender) => {
   try {
-    const response = await fetch(
-      `http://localhost:3000/v1/products?query=${filter}`
-    );
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!apiUrl) {
+      throw new Error("NEXT_PUBLIC_API_URL is not defined");
+    }
+
+    const response = await fetch(`${apiUrl}/v1/products?query=${filter}`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
